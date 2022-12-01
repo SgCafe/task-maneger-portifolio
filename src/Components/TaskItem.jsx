@@ -1,10 +1,28 @@
-import Task from './Task'
+import './TaskItem.scss'
+import { RiDeleteBinLine } from 'react-icons/ri'
 
-const TaskItem = ({ task }) => {
+const TaskItem = ({ task, label }) => {
   return (
-    <div>
-      <h1>{task.description}</h1>
-      <p>{task.isCompleted ? 'Completa' : 'Não completa'}</p>
+    <div className="task-item-container">
+      <div className="task-description">
+        <label
+          className={
+            task.isCompleted
+              ? 'checkbox-container-completed'
+              : 'checkbox-container'
+          }
+        >
+          {task.description}
+          <input type="checkbox" defaultChecked={task.isCompleted} />
+          <span
+            className={task.isCompleted ? 'checkmark completed' : 'checkmark'}
+          ></span>
+        </label>
+      </div>
+
+      <div className="delete">
+        <RiDeleteBinLine size="29px" color="#C92C2C" />
+      </div>
     </div>
   )
 }
